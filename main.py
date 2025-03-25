@@ -18,35 +18,37 @@ player_size = 50
 player_color = BLACK
 player_speed = 5
 
+# Inventory class to manage player's items
+class Inventory:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def remove_item(self, item):
+        if item in self.items:
+            self.items.remove(item)
+
+    def has_item(self, item):
+        return item in self.items
+
+    def display_inventory(self):
+        print("Inventory:")
+        for item in self.items:
+            print(f"- {item}")
+
+# Example usage
+inventory = Inventory()
+inventory.add_item("Sword")
+inventory.add_item("Shield")
+inventory.display_inventory()
+
 # Main game loop
 running = True
 while running:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:# Inventory class to manage player's items
-        class Inventory:
-            def __init__(self):
-                self.items = []
-
-            def add_item(self, item):
-                self.items.append(item)
-
-            def remove_item(self, item):
-                if item in self.items:
-                    self.items.remove(item)
-
-            def has_item(self, item):
-                return item in self.items
-
-            def display_inventory(self):
-                print("Inventory:")
-                for item in self.items:
-                    print(f"- {item}")
-
-        # Example usage
-        inventory = Inventory()
-        inventory.add_item("Sword")
-        inventory.add_item("Shield")
-        inventory.display_inventory()
+        if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
@@ -72,3 +74,4 @@ while running:
 
     # Cap the frame rate
     pygame.time.Clock().tick(30)
+
