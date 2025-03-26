@@ -1,7 +1,6 @@
 import pygame
 import sys
-
-from pygame.examples.grid import TILE_SIZE
+from pygame.examples.grid import TILE_SIZE, TILES_HORIZONTAL
 
 # Initialize pygame
 pygame.init()
@@ -27,7 +26,7 @@ TILE_TYPES = {
 
 # Create a tile map
 tile_map = [
-    ["grass", "grass", "water", "grass", "dirt"],
+    ["grass", "grass", "grass", "grass", "grass"],
     ["dirt", "water", "water", "grass", "grass"],
     ["grass", "grass", "dirt", "dirt", "water"],
     ["water", "grass", "grass", "dirt", "grass"],
@@ -39,32 +38,6 @@ player_pos = [400, 300]
 player_size = 50
 player_color = BLACK
 player_speed = 5
-
-# Inventory class to manage player's items
-class Inventory:
-    def __init__(self):
-        self.items = []
-
-    def add_item(self, item):
-        self.items.append(item)
-
-    def remove_item(self, item):
-        if item in self.items:
-            self.items.remove(item)
-
-    def has_item(self, item):
-        return item in self.items
-
-    def display_inventory(self):
-        print("Inventory:")
-        for item in self.items:
-            print(f"- {item}")
-
-# Example usage
-inventory = Inventory()
-inventory.add_item("Sword")
-inventory.add_item("Shield")
-inventory.display_inventory()
 
 # Main game loop
 running = True
