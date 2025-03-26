@@ -1,5 +1,6 @@
 import pygame
 import sys
+import os
 
 # Initialize pygame
 pygame.init()
@@ -8,41 +9,12 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("2D Sandbox Game")
 
-# Define colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
+# Load the sprite image
+player_image = pygame.image.load('Platformer Art/snailWalk1.png')
 
 # Player settings
 player_pos = [400, 300]
-player_size = 50
-player_color = BLACK
 player_speed = 5
-
-# Inventory class to manage player's items
-class Inventory:
-    def __init__(self):
-        self.items = []
-
-    def add_item(self, item):
-        self.items.append(item)
-
-    def remove_item(self, item):
-        if item in self.items:
-            self.items.remove(item)
-
-    def has_item(self, item):
-        return item in self.items
-
-    def display_inventory(self):
-        print("Inventory:")
-        for item in self.items:
-            print(f"- {item}")
-
-# Example usage
-inventory = Inventory()
-inventory.add_item("Sword")
-inventory.add_item("Shield")
-inventory.display_inventory()
 
 # Main game loop
 running = True
@@ -64,10 +36,10 @@ while running:
         player_pos[1] += player_speed
 
     # Fill the screen with white
-    screen.fill(WHITE)
+    screen.fill(255, 255, 255)
 
-    # Draw the player
-    pygame.draw.rect(screen, player_color, (player_pos[0], player_pos[1], player_size, player_size))
+    # Draw the player sprite
+    screen.blit(player_image, player_pos)
 
     # Update the display
     pygame.display.flip()
